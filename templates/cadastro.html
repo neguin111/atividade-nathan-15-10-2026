@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NH SmartBox - Novo Cadastro</title>
+    <style>
+        :root {
+            --bg-principal: #121418;
+            --card-bg: #1e222b;
+            --cor-destaque: #00a8ff;
+            --texto: #ffffff;
+            --borda: #2a2e39;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-principal);
+            color: var(--texto);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card-cadastro {
+            background: var(--card-bg);
+            padding: 35px 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            border-top: 4px solid var(--cor-destaque);
+        }
+
+        .header-cadastro {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header-cadastro h1 span {
+            color: var(--cor-destaque);
+        }
+
+        .campo-grupo {
+            margin-bottom: 15px;
+        }
+
+        .campo-grupo label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .campo-grupo input, 
+        .campo-grupo select {
+            width: 100%;
+            padding: 11px;
+            border-radius: 6px;
+            border: 1px solid var(--borda);
+            background-color: #121418;
+            color: var(--texto);
+            font-size: 14px;
+            outline: none;
+        }
+
+        .campo-grupo input:focus, 
+        .campo-grupo select:focus {
+            border-color: var(--cor-destaque);
+        }
+
+        .btn-cadastrar {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            background-color: var(--cor-destaque);
+            color: #000;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .rodape-links {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #888;
+        }
+
+        .rodape-links a {
+            color: var(--cor-destaque);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-cadastro">
+        <div class="header-cadastro">
+            <h1>Criar Conta <span>NH SmartBox</span></h1>
+        </div>
+
+        <form action="/cadastro" method="POST">
+            <div class="campo-grupo">
+                <label for="nome">Nome Completo</label>
+                <input type="text" id="nome" name="nome" placeholder="Ex: Lucas Silva" required>
+            </div>
+
+            <div class="campo-grupo">
+                <label for="login">Usuário (Login)</label>
+                <input type="text" id="login" name="login" placeholder="Ex: lucas.silva" required>
+            </div>
+
+            <div class="campo-grupo">
+                <label for="senha">Senha de Acesso</label>
+                <input type="password" id="senha" name="senha" placeholder="Crie uma senha forte" required>
+            </div>
+
+            <div class="campo-grupo">
+                <label for="tipo">Perfil de Acesso</label>
+                <select id="tipo" name="tipo">
+                    <option value="Morador">Morador</option>
+                    <option value="Admin">Administrador</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-cadastrar">Concluir Cadastro</button>
+        </form>
+
+        <div class="rodape-links">
+            Já possui cadastro? <a href="/login">Voltar ao Login</a>
+        </div>
+    </div>
+
+</body>
+</html>

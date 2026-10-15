@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NH SmartBox - Login</title>
+    <style>
+        :root {
+            --bg-principal: #121418;
+            --card-bg: #1e222b;
+            --cor-destaque: #00a8ff;
+            --texto: #ffffff;
+            --borda: #2a2e39;
+            --erro-cor: #ff4757;
+        }
+
+        * {
+            box-sizing: border-border;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-principal);
+            color: var(--texto);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .login-box {
+            background: var(--card-bg);
+            padding: 35px 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 360px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            border-top: 4px solid var(--cor-destaque);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .login-header h1 span {
+            color: var(--cor-destaque);
+        }
+
+        .campo-grupo {
+            margin-bottom: 18px;
+        }
+
+        .campo-grupo label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .campo-grupo input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid var(--borda);
+            background-color: #121418;
+            color: var(--texto);
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .campo-grupo input:focus {
+            border-color: var(--cor-destaque);
+        }
+
+        .btn-entrar {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: none;
+            background-color: var(--cor-destaque);
+            color: #000;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 5px;
+        }
+
+        .btn-entrar:hover {
+            opacity: 0.9;
+        }
+
+        .mensagem-erro {
+            background-color: rgba(255, 71, 87, 0.15);
+            border: 1px solid var(--erro-cor);
+            color: var(--erro-cor);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .rodape-links {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #888;
+        }
+
+        .rodape-links a {
+            color: var(--cor-destaque);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .rodape-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <div class="login-header">
+            <h1><span>NH</span> SmartBox</h1>
+        </div>
+
+        {# Exibe alertas caso a validação no Python falhe #}
+        {% if erro %}
+            <div class="mensagem-erro">
+                {{ erro }}
+            </div>
+        {% endif %}
+
+        <form action="/login" method="POST">
+            <div class="campo-grupo">
+                <label for="login">Usuário / Login</label>
+                <input type="text" id="login" name="login" placeholder="Digite seu usuário" required>
+            </div>
+
+            <div class="campo-grupo">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+            </div>
+
+            <button type="submit" class="btn-entrar">Acessar Painel</button>
+        </form>
+
+        <div class="rodape-links">
+            Ainda não tem acesso? <a href="/cadastro">Cadastre-se</a>
+        </div>
+    </div>
+
+</body>
+</html>
